@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dangdang.crawling.biz.common.mapper.CrawlingResultMapper">
+
+    <!-- 크롤링 결과 조회 -->
+    <select id="selectById" parameterType="long" resultType="com.dangdang.crawling.biz.common.entity.CrawlingResult">
+        SELECT result_id, job_id, content, item_count, status, error_message, created_at
+        FROM crawling_result
+        WHERE result_id = #{resultId}
+    </select>
+
+    <!-- 특정 작업의 결과 조회 -->
+    <select id="selectByJobId" parameterType="long" resultType="com.dangdang.crawling.biz.common.entity.CrawlingResult">
+        SELECT result_id, job_id, content, item_count, status, error_message, created_at
+        FROM crawling_result
+        WHERE job_id = #{jobId}
+        ORDER BY created_at DESC
+    </select>
+
+    <!-- 크롤링 결과 등록 -->
+    <insert id="insert" parameterType="com.dangdang.crawling.biz.common.entity.CrawlingResult" useGeneratedKeys="true" keyProperty="resultId">
+        INSERT INTO crawling_result (job_id, content, item_count, status, error_message, created_at)
+        VALUES (#{jobId}, #{content}, #{itemCount}, #{status}, #{errorMessage}, NOW())
+    </insert>
+
+    <!-- 크롤링 결과 삭제 (7일 이상 된 결과) -->
+    <delete id="deleteOldResults">
+        DELETE FROM crawling_result
+        WHERE created_at &lt; DATE_SUB(NOW(), INTERVAL 7 DAY)
+    </delete>
+
+</mapper>
+

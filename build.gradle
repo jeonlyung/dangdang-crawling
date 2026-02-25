@@ -1,0 +1,79 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.dangdang'
+version = '0.0.1-SNAPSHOT'
+description = 'DangDang Crawling Server'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main { java { srcDirs = ['src/main/java'] } }
+    test { java { srcDirs = ['src/test/java'] } }
+}
+
+dependencies {
+    // [핵심/웹]
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // [크롤링] Jsoup - HTML 파싱
+    implementation 'org.jsoup:jsoup:1.17.2'
+
+    // [크롤링] Selenium - 동적 페이지 크롤링
+    implementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
+
+    // [크롤링] WebDriver Manager - 드라이버 자동 관리
+    implementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
+
+    // [통신] WebClient
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // [스케줄러] 주기적 크롤링
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+
+    // [데이터베이스] MyBatis + MySQL
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+    implementation 'com.mysql:mysql-connector-j'
+
+    // [캐싱] Redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // [유틸] Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // [유틸] Apache Commons
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'commons-io:commons-io:2.15.1'
+
+    // [JSON 처리]
+    implementation 'com.google.code.gson:gson'
+
+    // [로깅]
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+    // [설정 프로세서]
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // [테스트]
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
