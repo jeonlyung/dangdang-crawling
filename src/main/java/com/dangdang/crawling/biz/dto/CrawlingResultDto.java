@@ -1,6 +1,5 @@
 package com.dangdang.crawling.biz.dto;
 
-import com.dangdang.crawling.biz.domain.entity.CrawlingResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,37 +25,6 @@ public class CrawlingResultDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    /**
-     * Entity to DTO
-     */
-    public static CrawlingResultDto fromEntity(CrawlingResult entity) {
-        return CrawlingResultDto.builder()
-                .resultId(entity.getResultId())
-                .jobId(entity.getJobId())
-                .content(entity.getContent())
-                .itemCount(entity.getItemCount())
-                .status(entity.getStatus())
-                .errorMessage(entity.getErrorMessage())
-                .createdAt(entity.getCreatedAt())
-                .updatedAt(entity.getUpdatedAt())
-                .build();
-    }
-
-    /**
-     * DTO to Entity
-     */
-    public CrawlingResult toEntity() {
-        return CrawlingResult.builder()
-                .resultId(this.resultId)
-                .jobId(this.jobId)
-                .content(this.content)
-                .itemCount(this.itemCount)
-                .status(this.status)
-                .errorMessage(this.errorMessage)
-                .createdAt(this.createdAt)
-                .updatedAt(this.updatedAt)
-                .build();
-    }
 
 }
 

@@ -1,6 +1,5 @@
 package com.dangdang.crawling.biz.service.impl;
 
-import com.dangdang.crawling.biz.domain.entity.CrawlingResult;
 import com.dangdang.crawling.biz.dto.CrawlingResultDto;
 import com.dangdang.crawling.biz.mapper.CrawlingResultMapper;
 import com.dangdang.crawling.biz.service.CrawlingResultService;
@@ -24,32 +23,25 @@ public class CrawlingResultServiceImpl implements CrawlingResultService {
     @Override
     public List<CrawlingResultDto> getAllResults() {
         log.debug("Fetching all crawling results");
-        return crawlingResultMapper.selectAll()
-                .stream()
-                .map(CrawlingResultDto::fromEntity)
-                .toList();
+        return crawlingResultMapper.selectAll();
     }
 
     @Override
     public List<CrawlingResultDto> getResultsByJobId(Long jobId) {
         log.debug("Fetching crawling results for job: {}", jobId);
-        return crawlingResultMapper.selectByJobId(jobId)
-                .stream()
-                .map(CrawlingResultDto::fromEntity)
-                .toList();
+        return crawlingResultMapper.selectByJobId(jobId);
     }
 
     @Override
     public CrawlingResultDto getResultById(Long resultId) {
         log.debug("Fetching crawling result by id: {}", resultId);
-        CrawlingResult result = crawlingResultMapper.selectById(resultId);
-        return CrawlingResultDto.fromEntity(result);
+        return crawlingResultMapper.selectById(resultId);
     }
 
     @Override
     public CrawlingResultDto saveResult(CrawlingResultDto resultDto) {
         log.info("Saving crawling result for job: {}", resultDto.getJobId());
-        CrawlingResult result = CrawlingResult.builder()
+        CrawlingResultDto result = CrawlingResultDto.builder()
                 .jobId(resultDto.getJobId())
                 .content(resultDto.getContent())
                 .itemCount(resultDto.getItemCount())
@@ -60,7 +52,7 @@ public class CrawlingResultServiceImpl implements CrawlingResultService {
                 .build();
 
         crawlingResultMapper.insert(result);
-        return CrawlingResultDto.fromEntity(result);
+        return result;
     }
 
     @Override

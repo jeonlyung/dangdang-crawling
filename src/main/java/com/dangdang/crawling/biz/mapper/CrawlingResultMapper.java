@@ -1,6 +1,6 @@
 package com.dangdang.crawling.biz.mapper;
 
-import com.dangdang.crawling.biz.domain.entity.CrawlingResult;
+import com.dangdang.crawling.biz.dto.CrawlingResultDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,13 +11,13 @@ import java.util.List;
 @Mapper
 public interface CrawlingResultMapper {
 
-    List<CrawlingResult> selectAll();
+    List<CrawlingResultDto> selectAll();
 
-    CrawlingResult selectById(Long resultId);
+    CrawlingResultDto selectById(Long resultId);
 
-    List<CrawlingResult> selectByJobId(Long jobId);
+    List<CrawlingResultDto> selectByJobId(Long jobId);
 
-    void insert(CrawlingResult crawlingResult);
+    void insert(CrawlingResultDto crawlingResultDto);
 
     void delete(Long resultId);
 

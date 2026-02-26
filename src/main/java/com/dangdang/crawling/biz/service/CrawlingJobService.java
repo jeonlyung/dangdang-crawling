@@ -1,7 +1,5 @@
 package com.dangdang.crawling.biz.service;
 
-import com.dangdang.crawling.biz.domain.entity.CrawlingJob;
-import com.dangdang.crawling.biz.domain.entity.CrawlingResult;
 import com.dangdang.crawling.biz.dto.CrawlingJobDto;
 import com.dangdang.crawling.biz.dto.CrawlingResultDto;
 

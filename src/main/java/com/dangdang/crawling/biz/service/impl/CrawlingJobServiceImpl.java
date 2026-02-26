@@ -1,7 +1,5 @@
 package com.dangdang.crawling.biz.service.impl;
 
-import com.dangdang.crawling.biz.domain.entity.CrawlingJob;
-import com.dangdang.crawling.biz.domain.entity.CrawlingResult;
 import com.dangdang.crawling.biz.dto.CrawlingJobDto;
 import com.dangdang.crawling.biz.dto.CrawlingResultDto;
 import com.dangdang.crawling.biz.mapper.CrawlingJobMapper;
@@ -28,50 +26,42 @@ public class CrawlingJobServiceImpl implements CrawlingJobService {
     @Override
     public List<CrawlingJobDto> getAllJobs() {
         log.debug("Fetching all crawling jobs");
-        return crawlingJobMapper.selectAll()
-                .stream()
-                .map(CrawlingJobDto::fromEntity)
-                .toList();
+        return crawlingJobMapper.selectAll();
     }
 
     @Override
     public List<CrawlingJobDto> getActiveJobs() {
         log.debug("Fetching active crawling jobs");
-        return crawlingJobMapper.selectActive()
-                .stream()
-                .map(CrawlingJobDto::fromEntity)
-                .toList();
+        return crawlingJobMapper.selectActive();
     }
 
     @Override
     public CrawlingJobDto getJobById(Long jobId) {
         log.debug("Fetching crawling job by id: {}", jobId);
-        CrawlingJob job = crawlingJobMapper.selectById(jobId);
-        return CrawlingJobDto.fromEntity(job);
+        return crawlingJobMapper.selectById(jobId);
     }
 
     @Override
     public CrawlingJobDto createJob(CrawlingJobDto jobDto) {
         log.info("Creating new crawling job: {}", jobDto.getJobName());
-        CrawlingJob job = jobDto.toEntity();
-        job = CrawlingJob.builder()
-                .jobName(job.getJobName())
-                .targetUrl(job.getTargetUrl())
-                .selector(job.getSelector())
-                .description(job.getDescription())
-                .active(job.isActive())
-                .cronExpression(job.getCronExpression())
+        CrawlingJobDto job = CrawlingJobDto.builder()
+                .jobName(jobDto.getJobName())
+                .targetUrl(jobDto.getTargetUrl())
+                .selector(jobDto.getSelector())
+                .description(jobDto.getDescription())
+                .active(jobDto.isActive())
+                .cronExpression(jobDto.getCronExpression())
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();
         crawlingJobMapper.insert(job);
-        return CrawlingJobDto.fromEntity(job);
+        return job;
     }
 
     @Override
     public CrawlingJobDto updateJob(Long jobId, CrawlingJobDto jobDto) {
         log.info("Updating crawling job: {}", jobId);
-        CrawlingJob job = CrawlingJob.builder()
+        CrawlingJobDto job = CrawlingJobDto.builder()
                 .jobId(jobId)
                 .jobName(jobDto.getJobName())
                 .targetUrl(jobDto.getTargetUrl())
@@ -82,7 +72,7 @@ public class CrawlingJobServiceImpl implements CrawlingJobService {
                 .updatedAt(LocalDateTime.now())
                 .build();
         crawlingJobMapper.update(job);
-        return CrawlingJobDto.fromEntity(job);
+        return job;
     }
 
     @Override
@@ -94,7 +84,7 @@ public class CrawlingJobServiceImpl implements CrawlingJobService {
     @Override
     public CrawlingResultDto executeCrawling(Long jobId) {
         log.info("Executing crawling job: {}", jobId);
-        CrawlingJob job = crawlingJobMapper.selectById(jobId);
+        CrawlingJobDto job = crawlingJobMapper.selectById(jobId);
 
         try {
             List<String> results = jsoupCrawlerService.crawl(
@@ -103,24 +93,24 @@ public class CrawlingJobServiceImpl implements CrawlingJobService {
                     null
             );
 
-            CrawlingResult result = CrawlingResult.builder()
+            CrawlingResultDto result = CrawlingResultDto.builder()
                     .jobId(jobId)
                     .itemCount(results.size())
                     .status("SUCCESS")
                     .createdAt(LocalDateTime.now())
                     .build();
 
-            return CrawlingResultDto.fromEntity(result);
+            return result;
         } catch (Exception e) {
             log.error("Error executing crawling job: {}", jobId, e);
-            CrawlingResult result = CrawlingResult.builder()
+            CrawlingResultDto result = CrawlingResultDto.builder()
                     .jobId(jobId)
                     .status("FAILED")
                     .errorMessage(e.getMessage())
                     .createdAt(LocalDateTime.now())
                     .build();
 
-            return CrawlingResultDto.fromEntity(result);
+            return result;
         }
     }
 
