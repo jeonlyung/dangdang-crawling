@@ -4,40 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21e008f9-dcce-4fc9-b568-76ade2fa1cdd" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/SpringbootThymeleafApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/biz/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/aop/GlobalAspect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/batch/BatchExecutor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/constatns/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/exception/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/interceptor/CustomInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/interceptor/CustomMapperInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/message/MessageConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/security/JasyptConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/security/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/sftp/config/SftpConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/sftp/service/SftpContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/sftp/service/SftpService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/com/project/springboot_thymeleaf/global/sftp/service/impl/SftpServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/message/messages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/static/css/common.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/static/js/common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/templates/fragments/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/templates/fragments/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/templates/layout/defaultLayout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/templates/pages/main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/test/java/com/project/springboot_thymeleaf/SpringbootThymeleafApplicationTests.java" beforeDir="false" />
+    <list default="true" id="21e008f9-dcce-4fc9-b568-76ade2fa1cdd" name="변경" comment="Crawling Server 초기 구성2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +19,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="14" />
+    <option name="cachedIndexableFilesCount" value="36" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExternalProjectsData">
@@ -58,8 +27,25 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dangdang-crawling" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -115,7 +101,20 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="Application" factoryName="Application">
+    <configuration name="DangdangCrawlingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/../value.env" />
+      </option>
+      <module name="dangdang-crawling.main" />
+      <selectedOptions>
+        <option name="environmentVariables" />
+      </selectedOptions>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dangdang.crawling.DangdangCrawlingApplication" />
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,11 +136,46 @@
       <option name="presentableId" value="Default" />
       <updated>1771996212155</updated>
       <workItem from="1771996213217" duration="960000" />
+      <workItem from="1771997236840" duration="6103000" />
+      <workItem from="1772007508649" duration="430000" />
+      <workItem from="1772007960363" duration="39000" />
+      <workItem from="1772072079019" duration="86000" />
     </task>
+    <task id="LOCAL-00001" summary="readme 변경 &#10; - Carwling 서버 구성">
+      <option name="closed" value="true" />
+      <created>1771997276272</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1771997276272</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Crawling Server 초기 구성">
+      <option name="closed" value="true" />
+      <created>1771997320521</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771997320521</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Crawling Server 초기 구성2">
+      <option name="closed" value="true" />
+      <created>1771997349327</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1771997349327</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="readme 변경 &#10; - Carwling 서버 구성" />
+    <MESSAGE value="Crawling Server 초기 구성" />
+    <MESSAGE value="Crawling Server 초기 구성2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Crawling Server 초기 구성2" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
