@@ -1,6 +1,6 @@
-package com.dangdang.crawling.biz.common.mapper;
+package com.dangdang.crawling.biz.mapper;
 
-import com.dangdang.crawling.biz.common.entity.CrawlingResult;
+import com.dangdang.crawling.biz.domain.entity.CrawlingResult;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,11 +11,15 @@ import java.util.List;
 @Mapper
 public interface CrawlingResultMapper {
 
+    List<CrawlingResult> selectAll();
+
     CrawlingResult selectById(Long resultId);
 
     List<CrawlingResult> selectByJobId(Long jobId);
 
     void insert(CrawlingResult crawlingResult);
+
+    void delete(Long resultId);
 
     void deleteOldResults();
 

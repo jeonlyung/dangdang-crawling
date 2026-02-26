@@ -1,14 +1,16 @@
-package com.dangdang.crawling.biz.common.entity;
+package com.dangdang.crawling.biz.domain.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 /**
- * 크롤링 결과 엔티티
+ * 크롤링 결과 Entity
  */
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,6 +23,7 @@ public class CrawlingResult {
     private String status;      // SUCCESS, FAILED, PARTIAL
     private String errorMessage;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }
 

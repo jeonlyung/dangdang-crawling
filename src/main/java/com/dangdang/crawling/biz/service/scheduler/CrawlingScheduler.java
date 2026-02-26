@@ -1,6 +1,6 @@
-package com.dangdang.crawling.biz.scheduler;
+package com.dangdang.crawling.biz.service.scheduler;
 
-import com.dangdang.crawling.biz.crawler.JsoupCrawlerService;
+import com.dangdang.crawling.biz.service.crawler.JsoupCrawlerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;

@@ -1,6 +1,6 @@
-package com.dangdang.crawling.biz.common.mapper;
+package com.dangdang.crawling.biz.mapper;
 
-import com.dangdang.crawling.biz.common.entity.CrawlingJob;
+import com.dangdang.crawling.biz.domain.entity.CrawlingJob;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -2,24 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dangdang.crawling.biz.common.mapper.CrawlingJobMapper">
+<mapper namespace="com.dangdang.crawling.biz.mapper.CrawlingJobMapper">
 
     <!-- 크롤링 작업 전체 조회 -->
-    <select id="selectAll" resultType="com.dangdang.crawling.biz.common.entity.CrawlingJob">
+    <select id="selectAll" resultType="com.dangdang.crawling.biz.domain.entity.CrawlingJob">
         SELECT job_id, job_name, target_url, selector, description, active, cron_expression, created_at, updated_at
         FROM crawling_job
         ORDER BY job_id DESC
     </select>
 
     <!-- 크롤링 작업 상세 조회 -->
-    <select id="selectById" parameterType="long" resultType="com.dangdang.crawling.biz.common.entity.CrawlingJob">
+    <select id="selectById" parameterType="long" resultType="com.dangdang.crawling.biz.domain.entity.CrawlingJob">
         SELECT job_id, job_name, target_url, selector, description, active, cron_expression, created_at, updated_at
         FROM crawling_job
         WHERE job_id = #{jobId}
     </select>
 
     <!-- 활성화된 크롤링 작업만 조회 -->
-    <select id="selectActive" resultType="com.dangdang.crawling.biz.common.entity.CrawlingJob">
+    <select id="selectActive" resultType="com.dangdang.crawling.biz.domain.entity.CrawlingJob">
         SELECT job_id, job_name, target_url, selector, description, active, cron_expression, created_at, updated_at
         FROM crawling_job
         WHERE active = true
@@ -27,13 +27,13 @@
     </select>
 
     <!-- 크롤링 작업 등록 -->
-    <insert id="insert" parameterType="com.dangdang.crawling.biz.common.entity.CrawlingJob" useGeneratedKeys="true" keyProperty="jobId">
+    <insert id="insert" parameterType="com.dangdang.crawling.biz.domain.entity.CrawlingJob" useGeneratedKeys="true" keyProperty="jobId">
         INSERT INTO crawling_job (job_name, target_url, selector, description, active, cron_expression, created_at, updated_at)
         VALUES (#{jobName}, #{targetUrl}, #{selector}, #{description}, #{active}, #{cronExpression}, NOW(), NOW())
     </insert>
 
     <!-- 크롤링 작업 수정 -->
-    <update id="update" parameterType="com.dangdang.crawling.biz.common.entity.CrawlingJob">
+    <update id="update" parameterType="com.dangdang.crawling.biz.domain.entity.CrawlingJob">
         UPDATE crawling_job
         SET job_name = #{jobName}, target_url = #{targetUrl}, selector = #{selector},
             description = #{description}, active = #{active}, cron_expression = #{cronExpression},

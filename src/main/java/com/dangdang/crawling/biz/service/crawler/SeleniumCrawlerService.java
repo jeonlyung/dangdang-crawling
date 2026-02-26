@@ -1,4 +1,4 @@
-package com.dangdang.crawling.biz.crawler;
+package com.dangdang.crawling.biz.service.crawler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
