@@ -19,6 +19,12 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
 
+  # Redis 미사용 시 자동 설정 비활성화
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+
   # Redis 설정
   data:
     redis:
@@ -34,7 +40,7 @@ spring:
 # MyBatis 설정
 mybatis:
   mapper-locations: classpath:/mapper/**/*.xml
-  type-aliases-package: com.dangdang.crawling.biz.common.entity
+  type-aliases-package: com.dangdang.crawling.biz.dto
 
 # 로깅 설정
 logging:
@@ -50,3 +56,8 @@ server:
   servlet:
     context-path: /api
 
+# 관리(헬스체크) 설정
+management:
+  health:
+    redis:
+      enabled: false
