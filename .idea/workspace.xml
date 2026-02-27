@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21e008f9-dcce-4fc9-b568-76ade2fa1cdd" name="변경" comment="yaml파일 암호화 설정">
+    <list default="true" id="21e008f9-dcce-4fc9-b568-76ade2fa1cdd" name="변경" comment="entity -&gt; dto로 통합">
       <change beforePath="$PROJECT_DIR$/.gradle/9.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.2.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/api/CrawlingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/common/dto/CrawlingJobDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/common/dto/CrawlingResultDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/common/entity/CrawlingJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/common/entity/CrawlingResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/common/mapper/CrawlingJobMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/common/mapper/CrawlingResultMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/crawler/JsoupCrawlerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/crawler/SeleniumCrawlerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/scheduler/CrawlingScheduler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CrawlingJob.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CrawlingJob.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CrawlingResult.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CrawlingResult.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/controller/CrawlingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dangdang/crawling/biz/api/CrawlingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +24,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="35" />
+    <option name="cachedIndexableFilesCount" value="44" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExternalProjectsData">
@@ -93,7 +82,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Gradle.dangdang-crawling 빌드.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -101,6 +95,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.DangdangCrawlingApplication.executor": "Run",
     "cidr.known.project.marker": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
@@ -176,7 +171,7 @@
       <workItem from="1772072079019" duration="108000" />
       <workItem from="1772072309397" duration="302000" />
       <workItem from="1772072620618" duration="47000" />
-      <workItem from="1772072680857" duration="398000" />
+      <workItem from="1772072680857" duration="15274000" />
     </task>
     <task id="LOCAL-00001" summary="readme 변경 &#10; - Carwling 서버 구성">
       <option name="closed" value="true" />
@@ -210,7 +205,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772072181099</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="크롤링 서버 구조 추가">
+      <option name="closed" value="true" />
+      <created>1772073130554</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772073130554</updated>
+    </task>
+    <task id="LOCAL-00006" summary="entity -&gt; dto로 통합">
+      <option name="closed" value="true" />
+      <created>1772073380413</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772073380413</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +232,9 @@
     <MESSAGE value="Crawling Server 초기 구성" />
     <MESSAGE value="Crawling Server 초기 구성2" />
     <MESSAGE value="yaml파일 암호화 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="yaml파일 암호화 설정" />
+    <MESSAGE value="크롤링 서버 구조 추가" />
+    <MESSAGE value="entity -&gt; dto로 통합" />
+    <option name="LAST_COMMIT_MESSAGE" value="entity -&gt; dto로 통합" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

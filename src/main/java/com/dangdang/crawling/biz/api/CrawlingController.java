@@ -1,4 +1,4 @@
-package com.dangdang.crawling.biz.controller;
+package com.dangdang.crawling.biz.api;
 
 import com.dangdang.crawling.biz.dto.CrawlingJobDto;
 import com.dangdang.crawling.biz.dto.CrawlingResultDto;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/crawling")
+@RequestMapping("/crawling")
 @RequiredArgsConstructor
 public class CrawlingController {
 
@@ -116,6 +116,3 @@ public class CrawlingController {
     }
 
 }
-
-
-
