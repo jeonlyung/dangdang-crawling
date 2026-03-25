@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dangdang.crawling.biz.mapper.PetListingMapper">
+
+    <!-- source_url 기준으로 신규 insert 또는 기존 row update -->
+    <insert id="upsertBatch">
+        INSERT INTO pet_listing (
+            source_site,
+            source_url,
+            breed,
+            age,
+            region,
+            price,
+            free_adoption,
+            image_url,
+            first_seen_at,
+            last_seen_at,
+            active
+        )
+        VALUES
+        <foreach collection="listings" item="item" separator=",">
+            (
+                'animal.go.kr',
+                #{item.sourceUrl},
+                #{item.breed},
+                #{item.age},
+                #{item.region},
+                #{item.price},
+                #{item.freeAdoption},
+                #{item.imageUrl},
+                NOW(),
+                NOW(),
+                true
+            )
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+            breed = VALUES(breed),
+            age = VALUES(age),
+            region = VALUES(region),
+            price = VALUES(price),
+            free_adoption = VALUES(free_adoption),
+            image_url = VALUES(image_url),
+            last_seen_at = NOW(),
+            active = true
+    </insert>
+
+    <!-- 마지막 관측 시간 기준으로 더 이상 보이지 않는 데이터를 비활성화 -->
+    <update id="deactivateStale">
+        UPDATE pet_listing
+        SET active = false
+        WHERE source_site = 'animal.go.kr'
+          AND active = true
+          AND last_seen_at &lt; #{threshold}
+    </update>
+
+</mapper>
+
