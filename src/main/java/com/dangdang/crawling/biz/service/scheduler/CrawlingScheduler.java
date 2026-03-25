@@ -1,8 +1,9 @@
 package com.dangdang.crawling.biz.service.scheduler;
 
-import com.dangdang.crawling.biz.service.crawler.JsoupCrawlerService;
+import com.dangdang.crawling.biz.service.crawler.PetListingSyncService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -14,37 +15,44 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CrawlingScheduler {
 
-    private final JsoupCrawlerService jsoupCrawlerService;
+    private final PetListingSyncService petListingSyncService;
+
+    @Value("${app.crawling.pet.enabled:true}")
+    private boolean petSyncEnabled;
 
     /**
-     * 매일 자정에 실행되는 크롤링 작업
+     * animal.go.kr 목록을 주기적으로 수집해서 DB를 갱신
      */
-    @Scheduled(cron = "0 0 0 * * *")
-    public void dailyCrawling() {
-        log.info("Starting daily crawling task");
+    @Scheduled(cron = "${app.crawling.pet.cron:0 */30 * * * *}")
+    public void syncAnimalGoKr() {
+        if (!petSyncEnabled) {
+            log.info("Pet listing sync is disabled by config.");
+            return;
+        }
+
+        log.info("Starting scheduled animal.go.kr sync");
         try {
-            // 예제 크롤링 작업
-            // TODO: 실제 크롤링 로직 구현
-            log.info("Daily crawling task completed");
+            int count = petListingSyncService.syncAnimalGoKrListings();
+            log.info("Scheduled animal.go.kr sync completed. upserted={}", count);
         } catch (Exception e) {
-            log.error("Error in daily crawling task", e);
+            log.error("Error in scheduled animal.go.kr sync", e);
         }
     }
 
     /**
-     * 매시간 실행되는 크롤링 작업
+     * 장시간 보이지 않는 목록을 비활성화
      */
-    @Scheduled(cron = "0 0 * * * *")
-    public void hourlyCheck() {
-        log.info("Starting hourly check");
+    @Scheduled(cron = "${app.crawling.pet.cleanup-cron:0 10 3 * * *}")
+    public void deactivateStaleListings() {
+        if (!petSyncEnabled) {
+            return;
+        }
+
         try {
-            // 예제 크롤링 작업
-            // TODO: 실제 크롤링 로직 구현
-            log.info("Hourly check completed");
+            int updated = petListingSyncService.deactivateStaleListings();
+            log.info("Stale pet listing cleanup completed. deactivated={}", updated);
         } catch (Exception e) {
-            log.error("Error in hourly check", e);
+            log.error("Error in stale pet listing cleanup", e);
         }
     }
-
 }
-
