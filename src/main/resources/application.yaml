@@ -61,3 +61,15 @@ management:
   health:
     redis:
       enabled: false
+
+app:
+  crawling:
+    pet:
+      enabled: true
+      # 기본 권장 주기: 30분마다 갱신
+      cron: "0 */30 * * * *"
+      # 매일 새벽 3시 10분에 오래된 데이터 비활성화
+      cleanup-cron: "0 10 3 * * *"
+      page-size: 12
+      max-pages: 3
+      stale-hours: 48
